@@ -12,7 +12,10 @@ warnings.filterwarnings("ignore", category=UserWarning)
 load_dotenv(override=True)
 
 # 1. 初始化模型
-llm = ChatGoogleGenerativeAI(model="gemini-2.5-pro",GEMINI_API_KEY="key", temperature=0)
+llm = ChatGoogleGenerativeAI(
+        model="gemini-2.5-pro",
+        google_api_key=os.getenv("GEMINI_API_KEY"),
+        temperature=0
 
 # 2. 設定 JSON 解析器
 parser = JsonOutputParser(pydantic_object=LogisticsExtraction)
